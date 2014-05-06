@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Wave Machine</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/night.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+        
+        <script type="text/javascript"
+          src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        </script>
+	</head>
+
+	<body>
+		<div class="reveal">
+			<div class="slides">
+                <section data-background="assets/water-ripples-3.jpg">
+                    <h2>Simulating the Wave Equation</h2>
+                    <br/>
+                    <h4>Brandon Pelfrey</h4>
+                </section>
+                
+                <section>
+                    (Demo)
+                </section>
+                
+                <section>
+                    <h2>What's this all about?</h2>
+                    <ul>
+                        <li>Some wave equation theory</li>
+                        <li>Some basic simulation theory</li>
+                        <li>How to actually code all this stuff</li>
+                    </ul>
+                </section>
+                
+                <section data-background="assets/water-ripples-4.jpg">
+                    <div style="text-align:right; bottom: 0px;">
+                        <h1>Let's Talk Waves</h1>
+                    </div>
+                </section>
+                
+                <section>
+                    <h3>Waves are everywhere</h3>
+                    <br/>
+                    <div style="text-align:left;">
+                    <p>A little <em>hard to define precisely</em>, but waves generally...</p>
+                    <br/>
+                    <ul style="padding-left: 5%;">
+                        <li class="fragment"><strong>Transmit energy</strong> (light, sound, radio)</li>
+                        <br/>
+                        <li class="fragment">Can <strong>reflect</strong> off of certain boundaries</li>
+                        <br/>
+                        <li class="fragment">Can be <strong>absorbed</strong> by certain boundaries</li>
+                        <br/>
+                        <li class="fragment">Can <strong>interfere</strong> with each other</li>
+                    </ul>
+                    </div>
+                </section>
+                
+                <section>
+                    <h3>Wave Equation</h3>
+                    <br/>
+                    <div>
+                        <table style="margin: 0 auto;">
+                            <tr>
+                                <td>$$\frac {\partial^2 u} {\partial t^2}$$</td>
+                                <td>$$=$$</td>
+                                <td>$$c \; \nabla^2 u$$</td>
+                            </tr>
+                            <tr style="height:20px;"></tr>
+                            <tr>
+                                <td class="fragment" style="color:orange">Acceleration</td>
+                                <td></td>
+                                <td class="fragment" style="color:lightblue">"Curvature"</td>
+                            </tr>
+                        </table>
+                    </div>
+                </section>
+                
+                
+                
+                <section>
+                    <h5>Great. How can I code upside-down triangles?</h5>
+                </section>
+                
+                <section data-background="assets/equations-1.jpg">
+                    <h1>Simulating Things</h1>
+                </section>
+                
+                <section>
+                    <h4>How can we solve these equations in a discrete way?</h4>
+                </section>
+                
+                <section>
+                    <h3>Finite Difference Method</h3>
+                    <br/>
+                    <div style="text-align:left;">
+                        <ol>
+                            <li>Sample function at some regular interval</li>
+                            <li>Figure out what the original equations look like in this discretized form</li>
+                        </ol>
+                    </div>
+                    
+                </section>
+                
+                <section>
+                </section>
+                
+                <section>
+                </section>
+                
+                <section>
+                </section>
+                
+                <section>
+                    <h1>Thanks for watching!</h1>
+                </section>
+                
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: false,
+				progress: true,
+				history: true,
+				center: true,
+                
+                width:1200,
+                margin: 0.01,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Optional libraries used to extend on reveal.js
+				dependencies: []
+			});
+
+		</script>
+
+	</body>
+</html>
