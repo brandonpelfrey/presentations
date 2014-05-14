@@ -111,12 +111,123 @@
                 </section>
                 
                 <section>
+                    <h3>Sampling the function</h3>
+                    (Function)
                 </section>
                 
                 <section>
+                    <h3>Sampling the function</h3>
+                    (Function, sampled)
                 </section>
                 
                 <section>
+                    <h3>Computing Derivatives of a Sampled Function</h3>
+                    <table style="margin: 0 auto;">
+                        <tr>
+                            <td>$$f(x_i+h)$$</td>
+                            <td>$$=$$</td>
+                            <td>$$f(x_i) + h \frac{df}{dx}\Big|_{x_i} + \mathcal{O}(h^2)$$</td>
+                        </tr>
+                        <tr style="height:20px;"></tr>
+                        <tr class="fragment">
+                            <td>$$f(x_{i+1})$$</td>
+                            <td>$$=$$</td>
+                            <td>$$f(x_i) + h f'({x_i})$$</td>
+                        </tr>
+                        <tr style="height:20px;"></tr>
+                        <tr class="fragment">
+                            <td>$$f'(x_i)$$</td>
+                            <td>$$=$$</td>
+                            <td>$$\frac{f(x_{i+1}) - f(x_{i})} {h}$$</td>
+                        </tr>
+                    </table>
+                </section>
+                
+                <section>
+                    <h3>Lazy Notation</h3>
+                    <table style="margin: 0 auto;">
+                        <tr>
+                            <td>$$f(x_i+k h)$$</td>
+                            <td class="fragment">$$= f(x_{i+k})$$</td>
+                            <td class="fragment">$$= f_{i+k}$$</td>
+                        </tr>
+                        <tr style="height:20px;"></tr>
+                    </table>
+                </section>
+                
+                <section>
+                    <h3>How about a second derivative?</h3>
+                    <table style="margin: 0 auto;">
+                        <tr>
+                            <td>$$f_{i+1}$$</td>
+                            <td>$$=$$</td>
+                            <td>$$f_i + h f'_i + \frac{h^2}{2} f''_i + \mathcal{O}(h^3)$$</td>
+                        </tr>
+                        <tr style="height:20px;"></tr>
+                        <tr class="fragment">
+                            <td>$$f_{i-1}$$</td>
+                            <td>$$=$$</td>
+                            <td>$$f_i - h f'_i + \frac{h^2}{2} f''_i + \mathcal{O}(h^3)$$</td>
+                        </tr>
+                        <tr style="height:20px;"></tr>
+                        <tr class="fragment">
+                            <td>$$f_{i+1} + f_{i-1}$$</td>
+                            <td>$$=$$</td>
+                            <td>$$2 f_i + h^2 f''_i + \mathcal{O}(h^3)$$</td>
+                        </tr>
+                    </table>
+                </section>
+                
+                <section>
+                    <table style="margin: 0 auto;">
+                        <tr>
+                            <td>$$\frac{f_{i-1} - 2f_i + f_{i+1}}{h^2}$$</td>
+                            <td>$$\approx$$</td>
+                            <td>$$f''_i$$</td>
+                        </tr>
+                        <tr style="height:20px;"></tr>
+                    </table>
+                </section>
+                
+                <section>
+                    <h3>The Discrete Laplacian</h3>
+                    <div class="fragment">$$\nabla^2 f(x,y) = \frac{\partial^2 f}{\partial x^2} + \frac{\partial^2 f}{\partial y^2}$$</div>
+                    <br/>
+                    <div class="fragment">$$\nabla^2 f_{i,j} \approx \frac{f_{i-1,j}-2f_{i,j}+f_{i+1,j}}{h^2} + \frac{f_{i,j-1}-2f_{i,j}+f_{i,j+1}}{h^2}$$</div>
+                    <br/>
+                    <div class="fragment">$$\nabla^2 f_{i,j} \approx \frac{-4f_{i,j}+f_{i-1,j}+f_{i+1,j} + f_{i,j-1} + f_{i,j+1}}{h^2}$$</div>
+                </section>
+                
+                <section>
+                    <h3>Bringing in Time</h3>
+                    <p>Acceleration means we need \(\frac{\partial^2 f}{\partial t^2}\)!</p>
+                    <br/>
+                    <div class="fragment">
+                        $$\frac {\partial f_{i,j}^n}{\partial t^2} = \frac{f_{i,j}^{n-1}-2f_{i,j}^{n}+f_{i,j}^{n+1}}{\delta t^2}$$
+                    </div>
+                    <br/>
+                    <div class="fragment">
+                        $$f^{new} = 2 f^{current} - f^{previous} + \delta t^2 \frac{\partial^2 f}{\partial t^2}$$
+                    </div>
+                </section>
+                
+                <section>
+                    <h3>All Together Now</h3>
+                    <table style="margin: 0 auto;">
+                        <tr>
+                            <td>$$\frac {\partial^2 u} {\partial t^2}$$</td>
+                            <td>$$=$$</td>
+                            <td>$$c \; \nabla^2 u$$</td>
+                        </tr>
+                        <tr style="height:20px;"></tr>
+                        <tr>
+                            <td class="fragment" style="color:orange">$$u_{i,j}^{n+1}$$</td>
+                            <td>$$=$$</td>
+                            <td class="fragment" style="color:lightblue">
+                                $$2 u_{i,j}^{n} - u_{i,j}^{n-1} + \frac{c \delta t^2}{h^2}(-4 u_{i,j}^{n} + u_{i\pm1,j\pm1}^{n})$$
+                            </td>
+                        </tr>
+                    </table>
                 </section>
                 
                 <section>
