@@ -16,6 +16,7 @@
         <script type="text/javascript"
           src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
         </script>
+        <script src="js/wave-simulation.js"></script>
 	</head>
 
 	<body>
@@ -28,7 +29,7 @@
                 </section>
                 
                 <section>
-                    (Demo)
+                    <canvas id="demoCanvas" width="256" height="256" style="margin-top: -70px; width: 800px; height: 800px;"></canvas>
                 </section>
                 
                 <section>
@@ -233,7 +234,6 @@
                 <section>
                     <h1>Thanks for watching!</h1>
                 </section>
-                
 			</div>
 		</div>
 
@@ -259,6 +259,31 @@
 				dependencies: []
 			});
 
+            var demoCanvas = document.getElementById('demoCanvas');
+            var waveSimulation = new WaveSimulation(256, .25*.25);
+            
+            // Periodically generate small, randomly-distributed impulses 
+            /*
+            setInterval(function(){
+                var i = Math.random() * waveSimulation.n;
+                var j = Math.random() * waveSimulation.n;
+                waveSimulation.grids[0].write(i|0, j|0, 1);
+            }, 1000.0 );
+            */
+            
+            waveSimulation.start();
+            
+            // Whenever we flip to the demo slide, restart the simulation
+            Reveal.addEventListener( 'slidechanged', function( event ) {
+                if (event.indexh == 1) {
+                    waveSimulation.stop(); 
+                    waveSimulation.clearGrid();
+                    setTimeout(function () {
+                        waveSimulation.start();
+                    }, 600);
+                }
+            } );
+            
 		</script>
 
 	</body>
